@@ -85,13 +85,13 @@ Output:"""
 
 summarize_prompt_template = (
     lambda primary_goal, history: f"""I want to solve the problem in the primary-query.
-I've loaded all of my research in the history so you can see what I've done so far. 
+I've loaded all of my research in the history so you can see what I've done so far.
 The history is in the schema {{problem2solve: solutions}}.
 Please synthesize my history into a final report about the primary-query.
 Make sure to remove any duplicate information if it exists in the history.
 
 Primary-query: {primary_goal}
-History: 
+History:
 {history}
 
 Output:"""
