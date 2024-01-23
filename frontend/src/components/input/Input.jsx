@@ -21,10 +21,10 @@ export default function Input() {
 
   return (
     <FirstReqContext.Provider value={firstReq}>
-      <div className="input-group input-group-lg w-75 text mx-auto my-5">
+      <div className="input-group input-group-lg text mx-auto my-5">
         <input type="text" className="form-control text-center border border-5 border-black " placeholder="Brainstorm an idea" aria-label="Brainstorm an idea" aria-describedby="button-addon2" />
         <button className="btn btn-dark" type="button" id="button-addon2" onClick={getFirstReq}>Go</button>
-        <input type="text" className="form-control text-center border border-5 border-black fst-italic fs-6" placeholder="Your optional preferences" aria-label="Server"></input>
+        <input type="text" className="form-control text-center border border-5 border-black fst-italic" placeholder="Your optional preferences" aria-label="Server"></input>
       </div>
     </FirstReqContext.Provider>
   );
