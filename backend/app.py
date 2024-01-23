@@ -132,10 +132,14 @@ def options_endpoint():
     data = request.json
     # mock results
     results = [
-        {"option": "Option 1", "description": "This is option 1"},
-        {"option": "Option 2", "description": "This is option 2"},
-        {"option": "Option 3", "description": "This is option 3"},
-        {"data" : data},
+        "This is option 1",
+        "This is option 2",
+        "This is option 3",
+        "This is option 4",
+        "This is option 5",
+        "This is option 6",
+        "This is option 7",
+        "This is option 8"
     ]
 
     return jsonify(results)

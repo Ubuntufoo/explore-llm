@@ -6,12 +6,12 @@ import Button from './components/button/button';
 import Input from './components/input/Input';
 
 function App() {
-  const [firstReq, setFirstReq] = useState(null);
+  const [subTasks, setSubTasks] = useState(null);
   const [inputValuePrimary, setInputValue] = useState('');
   const [inputValuePrefs, setInputValuePrefs] = useState('');
 
-  const setFirstReqCallback = (data, inputValuePrimary, inputValuePrefs) => {
-    setFirstReq(data);
+  const setFirstReqCallback = (subTasksResp, inputValuePrimary, inputValuePrefs) => {
+    setSubTasks(subTasksResp);
     setInputValue(inputValuePrimary);
     setInputValuePrefs(inputValuePrefs);
   };
@@ -28,7 +28,7 @@ function App() {
           : <div className='my-5'></div>
         }
       </h4>
-      {firstReq && (<Cards cardData={firstReq} prefs={inputValuePrefs} primaryGoal={inputValuePrimary} />)}
+      {subTasks && (<Cards cardTasks={subTasks} prefs={inputValuePrefs} primaryGoal={inputValuePrimary} />)}
       <hr className="mt-5 border border-5" />
       <Button />
     </div>

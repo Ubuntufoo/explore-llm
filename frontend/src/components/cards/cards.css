@@ -18,4 +18,11 @@
   background-color: #5c004f;
 }
 
+.list-group-item {
+  background-color: #5c004f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 

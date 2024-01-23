@@ -11,5 +11,9 @@ package.json
 styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
+### To Do
+pass history to app.jsx with callback function (see input component)
+then pass history to summarize button and include in fetch for summarization endpoint
+
 
 
