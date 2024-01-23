@@ -11,9 +11,5 @@ package.json
 styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
-  ###
-  App
-  Input | Cards | Input | Button
-
 
 

@@ -1,3 +1,21 @@
 .card {
   background-color: #5c004f;
+  transition: transform 0.5s ease;
 }
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+@media (min-height: 700px) {
+  .card {
+    height: 250px;
+  }
+  /* This media query sets the height of the card to 250px when the minimum height of the viewport is 700px or more. The purpose of this is to make the card look better on larger screens. */
+}
+
+.modal-content {
+  background-color: #5c004f;
+}
+
+

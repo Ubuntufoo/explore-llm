@@ -1,3 +1,10 @@
 html, body {
   background-color: purple;
+  height: 100%;
+}
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
