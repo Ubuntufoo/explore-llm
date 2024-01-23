@@ -37,9 +37,9 @@ export default function renderCards() {
   ];
 
   return (
-    <div className="row g-5 align-items-start">
+    <div className="row g-5 align-items-start mx-auto">
       {vacationPlans.map((param, index) => (
-        <div key={index} className="col-md-3">
+        <div key={index} className="col-lg-3 mx-auto">
           <div className="card text-light text-center mx-auto ratio ratio-16x9 shadow">
             <div className="card-body d-flex">
               {/* <h5 className="card-title">{param.title}</h5> */}
