@@ -10,32 +10,12 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'eslint-comments'],
+  plugins: ['react-refresh', 'header'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
-  
-    rules: {
-      'header/header': [
-        'error',
-        'block',
-        [
-          '*',
-          {
-            pattern: '^\\s*/\\*\\*',
-            lineComments: ' *',
-            blockComments: '*',
-          },
-        ],
-        [
-          ' *',
-          ' * @file Overview of the file',
-          ' * @author Your Name',
-          ' */',
-        ],
-      ],
-    },
+    'header/header': [2, 'line', { pattern: '.*' }],
   }
 };

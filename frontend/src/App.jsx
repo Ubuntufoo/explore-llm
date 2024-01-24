@@ -1,3 +1,4 @@
+// Main component of the application
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
