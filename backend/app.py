@@ -8,114 +8,18 @@ app = Flask(__name__)
 def decomposition_endpoint():
 
     # mock results
-    results = [
-        {
-            "id": "unique_id1",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the first sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id2",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the second sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id3",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the third sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id4",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the fourth sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id5",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the fifth sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id6",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the sixth sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id7",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the seventh sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
-        {
-            "id": "unique_id8",
-            "object": "response",
-            "created": 1677649420,
-            "model": "text-davinci-003",
-            "choices": [
-                {
-                    "message": "This is the eighth sample response from the API",
-                    "confidence": 0.95,
-                    "index": 0
-                }
-            ]
-        },
+    result = [
+        "This is the first mock sub task",
+        "This is the second mock sub task",
+        "This is the third mock sub task",
+        "This is the fourth mock sub task",
+        "This is the fifth mock sub task",
+        "This is the sixth mock sub task",
+        "This is the seventh mock sub task",
+        "This is the eighth mock sub task"
     ]
 
-    return jsonify(results)
+    return jsonify(result)
 
 # def decomposition_endpoint():
 #     data = request.json
@@ -155,8 +59,13 @@ def options_endpoint():
 #     return jsonify(result)
 
 
-# @app.route("/summarize", methods=["POST"])
-# def summarize_endpoint():
+@app.route("/summarize", methods=["POST"])
+def summarize_endpoint():
+
+    results = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc at tincidunt lacinia, nisl nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed auctor, mauris sed ultrices tincidunt, nunc nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed auctor, mauris sed ultrices tincidunt, nunc nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed auctor, mauris sed ultrices tincidunt, nunc nunc aliquam nunc, id tincidunt nunc nunc id nunc. Sed auctor, mauris sed ultrices tincidunt, nunc nunc aliquam nunc, id tincidunt nunc nunc id nunc."
+
+    return jsonify(results)
+
 #     data = request.json
 #     primary_goal = data.get("primary_goal")
 #     history = data.get("history", [])

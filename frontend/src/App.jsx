@@ -8,14 +8,26 @@ import Input from './components/input/Input';
 
 function App() {
   const [subTasks, setSubTasks] = useState(null);
-  const [inputValuePrimary, setInputValue] = useState('');
+  const [inputValuePrimary, setInputValuePrimary] = useState('');
   const [inputValuePrefs, setInputValuePrefs] = useState('');
+  const [optionsHistory, setOptionsHistory] = useState([]);
 
-  const setFirstReqCallback = (subTasksResp, inputValuePrimary, inputValuePrefs) => {
-    setSubTasks(subTasksResp);
-    setInputValue(inputValuePrimary);
-    setInputValuePrefs(inputValuePrefs);
+  console.log("app.jsx optionsHistory object:",optionsHistory)
+
+
+  const setFirstReqCallback = (data, primary, prefs) => {
+    setSubTasks(data);
+    setInputValuePrimary(primary);
+    setInputValuePrefs(prefs);
   };
+
+  const setOptionsHistoryCallback = (optionsHistory) => {
+    setOptionsHistory(optionsHistory);
+  }
+
+  const resetOptionsHxCallback = () => {
+    setOptionsHistory([]);
+  }
 
   return (
     <div className="container">
@@ -24,14 +36,14 @@ function App() {
         {inputValuePrimary
           ?
           (
-            <div className='mx-auto text-center py-4 my-2'>{inputValuePrimary}</div>
+            <div className='mx-auto text-center py-4 my-2 display-6'>{inputValuePrimary}</div>
           )
           : <div className='my-5'></div>
         }
       </h4>
-      {subTasks && (<Cards cardTasks={subTasks} prefs={inputValuePrefs} primaryGoal={inputValuePrimary} />)}
+      {subTasks && (<Cards setOptionsHistoryCallback={setOptionsHistoryCallback} cardTasks={subTasks} prefs={inputValuePrefs} primaryGoal={inputValuePrimary} />)}
       <hr className="mt-5 border border-5" />
-      <Button />
+      <Button optionsHistory={optionsHistory} resetOptionsHxCallback={resetOptionsHxCallback} />
     </div>
   );
 }

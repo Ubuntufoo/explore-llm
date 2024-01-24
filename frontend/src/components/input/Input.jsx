@@ -1,5 +1,8 @@
+// Renders the input field and button for the user to enter their primary goal and optional preferences.
+
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 export default function Input({ setFirstReqCallback }) {
   const [inputValuePrimary, setInputValuePrimary] = useState('');
   const [inputValuePrefs, setInputValuePrefs] = useState('');
