@@ -1,4 +1,4 @@
-// This file renders cards on page. It contains the modal that pops up on click. The modal contains the options for the card, which are fetched from the backend. The save button stores the options in the history context.
+// This file renders subTask cards. It contains the modal that pops up on click. The modal contains the options for each subTask. The save button stores the options in the history context.
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Cards.css';
@@ -10,7 +10,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardOptions, setCardOptions] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState({});
-  console.log("cards.jsx state for selectedOptions:", selectedOptions)
 
   const handleCardClick = (task) => {
     setSelectedCard(task);
@@ -40,7 +39,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
       .catch((error) => console.error('Error:', error));
   };
 
-  // add card:option to selectedOptions object
   const handleCheckboxChange = (option, card) => {
     setSelectedOptions((prevState) => {
       const newState = { ...prevState };
@@ -93,7 +91,9 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
                 onChange={() => handleCheckboxChange(cardOptions && cardOptions[0], selectedCard)}
                 id="firstCheckbox"
               />
-              <label className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox">
+              <label
+                className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox"
+              >
                 {cardOptions && cardOptions[0]}
               </label>
             </li>
@@ -105,12 +105,13 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
                   <input
                     className="form-check-input me-1"
                     type="checkbox"
-                    // checked is true if selectedOptions includes the option as a value for the selectedCard key
                     checked={selectedOptions[selectedCard] && selectedOptions[selectedCard].includes(option)}
                     onChange={() => handleCheckboxChange(option, selectedCard)}
                     id={`checkbox${index}`}
                   />
-                  <label className="form-check-label stretched-link ms-3 text-white" htmlFor={`checkbox${index}`}>
+                  <label
+                    className="form-check-label stretched-link ms-3 text-white" htmlFor={`checkbox${index}`}
+                  >
                     {option}
                   </label>
                 </li>

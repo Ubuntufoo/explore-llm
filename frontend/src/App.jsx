@@ -1,4 +1,4 @@
-// Main component of the application
+// Parent component of application
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -12,10 +12,7 @@ function App() {
   const [inputValuePrefs, setInputValuePrefs] = useState('');
   const [optionsHistory, setOptionsHistory] = useState([]);
 
-  console.log("app.jsx optionsHistory object:",optionsHistory)
-
-
-  const setFirstReqCallback = (data, primary, prefs) => {
+  const setGetDecompCallback = (data, primary, prefs) => {
     setSubTasks(data);
     setInputValuePrimary(primary);
     setInputValuePrefs(prefs);
@@ -31,13 +28,10 @@ function App() {
 
   return (
     <div className="container">
-      <Input setFirstReqCallback={setFirstReqCallback} />
+      <Input setGetDecompCallback={setGetDecompCallback} />
       <h4>
         {inputValuePrimary
-          ?
-          (
-            <div className='mx-auto text-center py-4 display-6 fs-2'>{inputValuePrimary}</div>
-          )
+          ? (<div className='mx-auto text-center py-4 display-6 fs-2'>{inputValuePrimary}</div>)
           : <div className='my-5'></div>
         }
       </h4>
