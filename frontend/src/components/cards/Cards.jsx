@@ -9,7 +9,7 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardOptions, setCardOptions] = useState(null);
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState({});
   console.log("cards.jsx state for selectedOptions:", selectedOptions)
 
   const handleCardClick = (task) => {
@@ -21,26 +21,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedCard(null);
-  };
-
-  const handleCheckboxChange = (option, card) => {
-    console.log("current card saving:", card)
-    const updatedOptions = [...selectedOptions];
-    if (updatedOptions.includes(option)) {
-      updatedOptions.splice(updatedOptions.indexOf(option), 1);
-    } else {
-      updatedOptions.push(option);
-    }
-    console.log("cards.jsx updatedOptions:", updatedOptions)
-    setSelectedOptions(updatedOptions);
-  };
-
-  const handleSave = () => {
-    setOptionsHistoryCallback({
-      primary_goal: primaryGoal,
-      selected_options: selectedOptions,
-    });
-    handleCloseModal();
   };
 
   const getOptions = (task) => {
@@ -60,6 +40,27 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
       .catch((error) => console.error('Error:', error));
   };
 
+  // add card:option to selectedOptions object
+  const handleCheckboxChange = (option, card) => {
+    setSelectedOptions((prevState) => {
+      const newState = { ...prevState };
+      if (newState[card] && newState[card].includes(option)) {
+        newState[card] = newState[card].filter((el) => el !== option);
+      } else {
+        newState[card] = newState[card] ? [...newState[card], option] : [option];
+      }
+      return newState;
+    });
+  };
+
+  const handleSave = () => {
+    setOptionsHistoryCallback({
+      primary_goal: primaryGoal,
+      selected_options: selectedOptions,
+    });
+    handleCloseModal();
+  };
+
   return (
     <div className="row g-5 align-items-start mx-auto">
       {cardTasks.map((subTask, index) => (
@@ -74,8 +75,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
           </div>
         </div>
       ))}
-
-      {/* Modal */}
       <Modal show={showModal} onHide={handleCloseModal} centered size="xl" fullscreen='lg-down' className="text-white">
         <Modal.Header closeButton>
           <Modal.Title className='text-light mx-auto'>
@@ -89,8 +88,9 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
               <input
                 className="form-check-input me-1"
                 type="checkbox"
-                checked={selectedOptions.includes(cardOptions && cardOptions[0], selectedCard)}
-                onChange={() => handleCheckboxChange(cardOptions && cardOptions[0])}
+                // checked is true if selectedOptions includes the first option as a value for the selectedCard key
+                checked={selectedOptions[selectedCard] && selectedOptions[selectedCard].includes(cardOptions && cardOptions[0])}
+                onChange={() => handleCheckboxChange(cardOptions && cardOptions[0], selectedCard)}
                 id="firstCheckbox"
               />
               <label className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox">
@@ -105,7 +105,8 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
                   <input
                     className="form-check-input me-1"
                     type="checkbox"
-                    checked={selectedOptions.includes(option)}
+                    // checked is true if selectedOptions includes the option as a value for the selectedCard key
+                    checked={selectedOptions[selectedCard] && selectedOptions[selectedCard].includes(option)}
                     onChange={() => handleCheckboxChange(option, selectedCard)}
                     id={`checkbox${index}`}
                   />

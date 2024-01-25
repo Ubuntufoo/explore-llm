@@ -36,7 +36,7 @@ function App() {
         {inputValuePrimary
           ?
           (
-            <div className='mx-auto text-center py-4 my-2 display-6'>{inputValuePrimary}</div>
+            <div className='mx-auto text-center py-4 display-6 fs-2'>{inputValuePrimary}</div>
           )
           : <div className='my-5'></div>
         }
