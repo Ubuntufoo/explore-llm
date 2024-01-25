@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\tmurphy\Documents\GitHub\explore-llm\backend\venv
+set VIRTUAL_ENV=C:\Coding projects\explore-llm-testbranch\backend\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

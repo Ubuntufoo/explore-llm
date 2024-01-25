@@ -23,6 +23,23 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
     setSelectedCard(null);
   };
 
+  const getOptions = (task) => {
+    fetch("/api/options", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        task: task,
+        personalization: prefs,
+        primary_goal: primaryGoal,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => setCardOptions(data))
+      .catch((error) => console.error('Error:', error));
+  };
+
   const handleCheckboxChange = (option, card) => {
     console.log("current card saving:", card)
     const updatedOptions = [...selectedOptions];
@@ -43,23 +60,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
     handleCloseModal();
   };
 
-  const getOptions = (task) => {
-    fetch("/api/options", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        task: task,
-        personalization: prefs,
-        primary_goal: primaryGoal,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => setCardOptions(data))
-      .catch((error) => console.error('Error:', error));
-  };
-
   return (
     <div className="row g-5 align-items-start mx-auto">
       {cardTasks.map((subTask, index) => (
@@ -74,8 +74,6 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
           </div>
         </div>
       ))}
-
-      {/* Modal */}
       <Modal show={showModal} onHide={handleCloseModal} centered size="xl" fullscreen='lg-down' className="text-white">
         <Modal.Header closeButton>
           <Modal.Title className='text-light mx-auto'>
