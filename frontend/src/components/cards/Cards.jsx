@@ -82,7 +82,7 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h6 className='fst-italic'>Primary option:</h6>
+          <h6 className='fst-italic'>Recommended:</h6>
           <ul className="list-group">
             <li className="list-group-item border border-0">
               <input

@@ -12,12 +12,20 @@ styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
 ### Discussion
-- style tweaks?
+
+- style tweaks? it is responsive for mobile, but not "optimized"
 - error handling and input validation
 - how to configure api calls in deployment with proxy
 - will api calls in deployment be made to the same domain as the frontend?
 - will api calls in deployment be slower, and require a loading action or spinner?
--
+
+### Optional TODO
+- refactor cards.jsx component to split out modal, options
+
+- organize cards by user importance with numbered badges
+- use numbered badges on card face to indicate # of options for subTask
+- drag and drop cards to reorder
+- store query history
 
 
 
