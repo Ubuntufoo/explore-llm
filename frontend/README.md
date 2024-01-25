@@ -12,10 +12,12 @@ styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
 ### Discussion
+- style tweaks?
+- error handling and input validation
 - how to configure api calls in deployment with proxy
 - will api calls in deployment be made to the same domain as the frontend?
 - will api calls in deployment be slower, and require a loading action or spinner?
-- 
+-
 
 
 
