@@ -6,14 +6,26 @@ Currently, two official plugins are available:
 
 ## Notes
 package.json
-  added /api proxy "http://localhost:5000/" in vite config to enable proxying to backend server
+  added /api proxy "http://localhost:5000/" in vite config to clean up api calls
 
 styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
-### To Do
-pass history to app.jsx with callback function (see input component)
-then pass history to summarize button and include in fetch for summarization endpoint
+### Discussion
+
+- style tweaks? it is responsive for mobile, but not "optimized"
+- error handling and input validation
+- how to configure api calls in deployment with proxy
+- will api calls in deployment be made to the same domain as the frontend?
+- will api calls in deployment be slower, and require a loading action or spinner?
+
+### Optional TODO
+- refactor cards.jsx component to split out modal, options
+
+- organize cards by user importance with numbered badges
+- use numbered badges on card face to indicate # of options for subTask
+- drag and drop cards to reorder
+- store query history
 
 
 

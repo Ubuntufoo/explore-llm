@@ -3,12 +3,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Input({ setFirstReqCallback }) {
+export default function Input({ setGetDecompCallback }) {
   const [inputValuePrimary, setInputValuePrimary] = useState('');
   const [inputValuePrefs, setInputValuePrefs] = useState('');
 
-
-  const getFirstReq = () => {
+  const getDecomp = () => {
     fetch("/api/decomposition", {
       method: 'POST',
       headers: {
@@ -21,7 +20,7 @@ export default function Input({ setFirstReqCallback }) {
     }).then(response => {
       return response.json();
     }).then(data => {
-      setFirstReqCallback(data, inputValuePrimary, inputValuePrefs);
+      setGetDecompCallback(data, inputValuePrimary, inputValuePrefs);
     }).catch(error => {
       console.error('Error:', error);
     });
@@ -37,7 +36,7 @@ export default function Input({ setFirstReqCallback }) {
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      getFirstReq();
+      getDecomp();
     }
   };
 
@@ -53,7 +52,7 @@ export default function Input({ setFirstReqCallback }) {
         onChange={handleInputChangePrimary}
         onKeyPress={handleKeyPress}
       />
-      <button className="btn btn-dark" type="button" id="button-addon2" onClick={getFirstReq}>Go</button>
+      <button className="btn btn-dark" type="button" id="button-addon2" onClick={getDecomp}>Go</button>
       <input
         type="text"
         className="form-control text-center border border-5 border-black fst-italic"
@@ -68,5 +67,5 @@ export default function Input({ setFirstReqCallback }) {
 }
 
 Input.propTypes = {
-  setFirstReqCallback: PropTypes.func.isRequired,
+  setGetDecompCallback: PropTypes.func.isRequired,
 };

@@ -1,4 +1,4 @@
-// This file renders cards on page. It contains the modal that pops up on click. The modal contains the options for the card, which are fetched from the backend. The save button stores the options in the history context.
+// This file renders subTask cards. It contains the modal that pops up on click. The modal contains the options for each subTask. The save button stores the options in the history context.
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Cards.css';
@@ -9,8 +9,7 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardOptions, setCardOptions] = useState(null);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  console.log("cards.jsx state for selectedOptions:", selectedOptions)
+  const [selectedOptions, setSelectedOptions] = useState({});
 
   const handleCardClick = (task) => {
     setSelectedCard(task);
@@ -41,15 +40,15 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   };
 
   const handleCheckboxChange = (option, card) => {
-    console.log("current card saving:", card)
-    const updatedOptions = [...selectedOptions];
-    if (updatedOptions.includes(option)) {
-      updatedOptions.splice(updatedOptions.indexOf(option), 1);
-    } else {
-      updatedOptions.push(option);
-    }
-    console.log("cards.jsx updatedOptions:", updatedOptions)
-    setSelectedOptions(updatedOptions);
+    setSelectedOptions((prevState) => {
+      const newState = { ...prevState };
+      if (newState[card] && newState[card].includes(option)) {
+        newState[card] = newState[card].filter((el) => el !== option);
+      } else {
+        newState[card] = newState[card] ? [...newState[card], option] : [option];
+      }
+      return newState;
+    });
   };
 
   const handleSave = () => {
@@ -81,17 +80,20 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h6 className='fst-italic'>Primary option:</h6>
+          <h6 className='fst-italic'>Recommended:</h6>
           <ul className="list-group">
             <li className="list-group-item border border-0">
               <input
                 className="form-check-input me-1"
                 type="checkbox"
-                checked={selectedOptions.includes(cardOptions && cardOptions[0], selectedCard)}
-                onChange={() => handleCheckboxChange(cardOptions && cardOptions[0])}
+                // checked is true if selectedOptions includes the first option as a value for the selectedCard key
+                checked={selectedOptions[selectedCard] && selectedOptions[selectedCard].includes(cardOptions && cardOptions[0])}
+                onChange={() => handleCheckboxChange(cardOptions && cardOptions[0], selectedCard)}
                 id="firstCheckbox"
               />
-              <label className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox">
+              <label
+                className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox"
+              >
                 {cardOptions && cardOptions[0]}
               </label>
             </li>
@@ -103,11 +105,13 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
                   <input
                     className="form-check-input me-1"
                     type="checkbox"
-                    checked={selectedOptions.includes(option)}
+                    checked={selectedOptions[selectedCard] && selectedOptions[selectedCard].includes(option)}
                     onChange={() => handleCheckboxChange(option, selectedCard)}
                     id={`checkbox${index}`}
                   />
-                  <label className="form-check-label stretched-link ms-3 text-white" htmlFor={`checkbox${index}`}>
+                  <label
+                    className="form-check-label stretched-link ms-3 text-white" htmlFor={`checkbox${index}`}
+                  >
                     {option}
                   </label>
                 </li>
