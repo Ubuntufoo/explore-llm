@@ -52,7 +52,7 @@ export default function Input({ setGetDecompCallback }) {
         onChange={handleInputChangePrimary}
         onKeyPress={handleKeyPress}
       />
-      <button className="btn btn-dark" type="button" id="button-addon2" onClick={getDecomp}>Go</button>
+      <button className="btn btn-dark" type="button" id="button-addon2" onClick={getDecomp}>Explore</button>
       <input
         type="text"
         className="form-control text-center border border-5 border-black fst-italic"

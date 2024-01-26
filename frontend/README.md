@@ -11,9 +11,15 @@ package.json
 styling
   BootStrap styling added with npm install react-bootstrap bootstrap
 
+  - move pref input below primary, shrink/make secondary, convert to dropdown
+
+- "i" info button next to explore
+
+- pip install Python-dotenv
+
 ### Discussion
 
-- style tweaks? it is responsive for mobile, but not "optimized"
+- colors: dark theme, black on gray? use bard as example
 - error handling and input validation
 - how to configure api calls in deployment with proxy
 - will api calls in deployment be made to the same domain as the frontend?

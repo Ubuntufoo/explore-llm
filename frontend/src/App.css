@@ -1,5 +1,5 @@
 html, body {
-  background-color: rgb(117, 56, 117);
+  background-color: gray;
   height: 100%;
 }
 #root {
@@ -10,5 +10,5 @@ html, body {
 }
 
 .modal-content {
-  background-color: #5c004f;
+  background-color: gray;
 }
