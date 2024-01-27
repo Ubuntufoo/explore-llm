@@ -15,8 +15,6 @@ styling
 
 - "i" info button next to explore
 
-- pip install Python-dotenv
-
 ### Discussion
 
 - colors: dark theme, black on gray? use bard as example

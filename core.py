@@ -1,7 +1,7 @@
 import os
 import tiktoken
 from tenacity import retry, stop_after_attempt, wait_fixed
-from huggingface_hub import InferenceClient
+# from huggingface_hub import InferenceClient
 
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -42,12 +42,12 @@ def llm(user_prompt, model, temperature=0.3):
     return output
 
 
-def hf_llm(text, model, params={"max_new_tokens": 500, "temperature": 0.3}):
-    prompt = f"<s>[INST]{text}[/INST]"
-    client = InferenceClient(model=model, token=HF_TOKEN)
+# def hf_llm(text, model, params={"max_new_tokens": 500, "temperature": 0.3}):
+#     prompt = f"<s>[INST]{text}[/INST]"
+#     client = InferenceClient(model=model, token=HF_TOKEN)
 
-    output = client.text_generation(prompt, **params)
-    return output
+#     output = client.text_generation(prompt, **params)
+#     return output
 
 
 decomposition_prompt_template = (
