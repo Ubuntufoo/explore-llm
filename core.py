@@ -108,7 +108,7 @@ def decomposition(primary_goal, personalization, history):
 def options(primary_goal, task, personalization, history):
     prompt = options_prompt_template(primary_goal, task, personalization, history)
     output = llm(prompt, GPT3)
-    output = [x.lstrip("0123456789. ") for x in output.split("\n")]
+    output = [x.lstrip("0123456789. ") for x in output.split("\n") if x != ""]
     return output
 
 

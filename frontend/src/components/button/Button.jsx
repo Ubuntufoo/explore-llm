@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 
-export default function Button({ resetOptionsHxCallback, ...optionsHistory }) {
+export default function Button({ resetOptionsHxCallback, optionsHistory }) {
 
   const [summary, setSummary] = useState(null);
   const [show, setShow] = useState(false);
@@ -53,6 +53,10 @@ export default function Button({ resetOptionsHxCallback, ...optionsHistory }) {
 
 Button.propTypes = {
   resetOptionsHxCallback: PropTypes.func.isRequired,
+  optionsHistory: PropTypes.shape({
+    primary_goal: PropTypes.string,
+    selected_options: PropTypes.object
+  }).isRequired,
 };
 
 

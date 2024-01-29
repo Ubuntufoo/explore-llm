@@ -10,7 +10,7 @@ function App() {
   const [subTasks, setSubTasks] = useState(null);
   const [inputValuePrimary, setInputValuePrimary] = useState('');
   const [inputValuePrefs, setInputValuePrefs] = useState('');
-  const [optionsHistory, setOptionsHistory] = useState([]);
+  const [optionsHistory, setOptionsHistory] = useState({});
 
   const setGetDecompCallback = (data, primary, prefs) => {
     setSubTasks(data);

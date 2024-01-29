@@ -10,11 +10,15 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardOptions, setCardOptions] = useState(null);
   const [selectedOptions, setSelectedOptions] = useState({});
+  const [apiCalled, setApiCalled] = useState([]);
 
   const handleCardClick = (task) => {
     setSelectedCard(task);
     setShowModal(true);
-    getOptions(task);
+    if (!apiCalled.includes(task)) {
+      getOptions(task);
+      setApiCalled((prevState) => [...prevState, task]);
+    }
   };
 
   const handleCloseModal = () => {
