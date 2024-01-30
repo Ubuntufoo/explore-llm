@@ -1,0 +1,4 @@
+/* round the right side corners of the explore button*/
+.explore {
+  border-radius: 0 5px 5px 0 !important;
+}
