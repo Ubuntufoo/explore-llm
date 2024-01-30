@@ -58,7 +58,7 @@ export default function Input({ setGetDecompCallback }) {
               onChange={handleInputChangePrimary}
               onKeyPress={handleKeyPress}
             />
-            <button className="btn btn-dark explore" type="button" id="button-addon2" onClick={getDecomp}>Explore</button>
+            <button className="btn btn-dark border border-5 border-dark explore" type="button" id="button-addon2" onClick={getDecomp}>Explore</button>
             <OverlayTrigger
               placement='bottom'
               overlay={

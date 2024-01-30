@@ -33,7 +33,7 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
   return (
     <div className="text-center">
       <button
-        type="button" className="btn btn-lg btn-dark w-50 mt-4"
+        type="button" className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
         onClick={() => { sendSummary(); handleShow(); handleResetClick() }}
       >
         Summarize
