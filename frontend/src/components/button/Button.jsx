@@ -2,11 +2,13 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Button({ resetOptionsHxCallback, optionsHistory }) {
 
   const [summary, setSummary] = useState(null);
   const [show, setShow] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,6 +17,7 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
   };
 
   const sendSummary = () => {
+    setShowSpinner(true);
     fetch("/api/summarize", {
       method: 'POST',
       headers: {
@@ -26,18 +29,24 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
       }),
     })
       .then((response) => response.json())
-      .then((data) => setSummary(data))
+      .then((data) => {
+        setShowSpinner(false);
+        setSummary(data);
+      })
       .catch((error) => console.error('Error:', error));
   };
 
   return (
     <div className="text-center">
-      <button
-        type="button" className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
-        onClick={() => { sendSummary(); handleShow(); handleResetClick() }}
-      >
-        Summarize
-      </button>
+      <div className="d-flex justify-content-center align-items-center">
+        <button
+          type="button" className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
+          onClick={() => { sendSummary(); handleShow(); handleResetClick() }}
+        >
+          Summarize
+        </button>
+        {showSpinner && <Spinner animation="grow" variant="dark" className="ms-5" />}
+      </div>
       {summary && (
         <Modal
           centered size="xl" fullscreen='lg-down' className="text-white" show={show} onHide={handleClose}
