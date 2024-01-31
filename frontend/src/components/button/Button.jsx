@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/Modal';
 import Spinner from 'react-bootstrap/Spinner';
+import './Button.css';
 
 export default function Button({ resetOptionsHxCallback, optionsHistory }) {
 
@@ -38,21 +39,32 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
 
   return (
     <div className="text-center">
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="d-flex justify-content-center align-items-center position-relative">
         <button
-          type="button" className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
-          onClick={() => { sendSummary(); handleShow(); handleResetClick() }}
+          type="button"
+          className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
+          onClick={() => {
+            sendSummary();
+            handleShow();
+            handleResetClick();
+          }}
         >
           Summarize
         </button>
-        {showSpinner && <Spinner animation="grow" variant="dark" className="ms-5" />}
+        {showSpinner && (
+          <Spinner
+            animation="grow"
+            variant="dark"
+            className="position-absolute top-50 end-0 translate-middle-y me-5"
+          />
+        )}
       </div>
       {summary && (
         <Modal
           centered size="xl" fullscreen='lg-down' className="text-white" show={show} onHide={handleClose}
         >
         <Modal.Body className='my-5'>
-            {summary}
+          <pre>{summary}</pre>
         </Modal.Body>
       </Modal>
         )}

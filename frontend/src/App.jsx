@@ -3,7 +3,7 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Cards from './components/cards/Cards';
-import Button from './components/button/button';
+import Button from './components/button/Button';
 import Input from './components/input/Input';
 import Spinner from 'react-bootstrap/Spinner';
 
@@ -37,7 +37,7 @@ function App() {
           </div>
         ) : (
           inputValuePrimary && (
-            <div className='mx-auto text-center py-4 display-6 fs-1 fw-bold'>{inputValuePrimary}</div>
+            <div className='mx-auto text-center py-4 display-6 fs-2 fw-bold'>{inputValuePrimary}</div>
           )
         )}
       </h4>
