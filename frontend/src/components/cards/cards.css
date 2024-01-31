@@ -14,10 +14,8 @@
   /* This media query sets the height of the card to 250px when the minimum height of the viewport is 700px or more. The purpose of this is to make the card look better on larger screens. */
 }
 
-
-
 .list-group-item {
-  background-color: gray;
+  background-color: rgb(69, 69, 69);
   display: flex;
   align-items: center;
   justify-content: center;

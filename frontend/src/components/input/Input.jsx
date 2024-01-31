@@ -11,6 +11,7 @@ export default function Input({ setGetDecompCallback }) {
   const [inputValuePrefs, setInputValuePrefs] = useState('');
 
   const getDecomp = () => {
+    setGetDecompCallback(null, inputValuePrimary, inputValuePrefs);
     fetch("/api/decomposition", {
       method: 'POST',
       headers: {
@@ -63,14 +64,14 @@ export default function Input({ setGetDecompCallback }) {
               placement='bottom'
               overlay={
                 <Tooltip id={`tooltip`} className=''>
-                  <p>
+                  <div>
                     <h5>To use this app:</h5>
                     <br />
                     Enter an idea or task you want to explore and it will decompose the task into sub-tasks. Optionally provide preferences.
                     <br />
                     <br />
                     Several options are listed within each sub-task; when you&apos;ve customized your options press &quot;summarize&quot; to see a final report.
-                  </p>
+                  </div>
                 </Tooltip>
               }
             >

@@ -8,9 +8,11 @@ import Button from 'react-bootstrap/Button';
 export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsHistoryCallback }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [cardOptions, setCardOptions] = useState(null);
+  const [cardOptions, setCardOptions] = useState({});
   const [selectedOptions, setSelectedOptions] = useState({});
   const [apiCalled, setApiCalled] = useState([]);
+  console.log("cardOptions object is:", cardOptions)
+  console.log("selectedOptions after box is clicked:", selectedOptions);
 
   const handleCardClick = (task) => {
     setSelectedCard(task);
@@ -39,7 +41,10 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
       }),
     })
       .then((response) => response.json())
-      .then((data) => setCardOptions(data))
+      .then((data) =>
+      // call setCardOptions so it sets task as a new value and the data as the value for that key
+        setCardOptions((prevState) => ({ ...prevState, [task]: data }))
+      )
       .catch((error) => console.error('Error:', error));
   };
 
@@ -86,7 +91,7 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
         <Modal.Body>
           <h6 className='fst-italic'>Recommended:</h6>
           <ul className="list-group">
-            <li className="list-group-item border border-0">
+            <li className="list-group-item border border-0 me-auto">
               <input
                 className="form-check-input me-1"
                 type="checkbox"
@@ -98,14 +103,17 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
               <label
                 className="form-check-label stretched-link ms-3 text-white" htmlFor="firstCheckbox"
               >
-                {cardOptions && cardOptions[0]}
+                {/* if the cardOptions object exists, search cardOptions for the selectedCard and display the first option in its array of option values */}
+                {cardOptions[selectedCard] && cardOptions[selectedCard][0]}
+
               </label>
             </li>
             <hr />
             <h6 className='fst-italic'>Secondary options:</h6>
-            {cardOptions &&
-              cardOptions.slice(1).map((option, index) => (
-                <li key={index} className="list-group-item border border-0">
+            {/* if cardOptions object exists, display the remaining options that correlates to the selectedCard */}
+            {cardOptions[selectedCard] &&
+              cardOptions[selectedCard].slice(1).map((option, index) => (
+                <li key={index} className="list-group-item border border-0 me-auto">
                   <input
                     className="form-check-input me-1"
                     type="checkbox"
