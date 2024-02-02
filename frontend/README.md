@@ -1,35 +1,28 @@
-# React + Vite
+# Project Name
+A recreation of the ExploreLLM project using React and Flask.
+
+## Installation
+<!---  --->
+
+### React + Vite
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Notes
-package.json
+### Notes
+package.json:
   added /api proxy "http://localhost:5000/" in vite config to clean up api calls
 
-styling
-  BootStrap styling added with npm install react-bootstrap bootstrap
-
-  - move pref input below primary, shrink/make secondary, convert to dropdown
-
-- "i" info button next to explore
-
-### Discussion
-
-- colors: dark theme, black on gray? use bard as example
-- error handling and input validation
-- how to configure api calls in deployment with proxy
-- will api calls in deployment be made to the same domain as the frontend?
-- will api calls in deployment be slower, and require a loading action or spinner?
+styling:
+  BootStrap 5 along with react-bootstrap library
 
 ### Optional TODO
-- refactor cards.jsx component to split out modal, options
+- refactor Cards.jsx/Button.jsx component to split out modal, options
+- utilize children prop where applicable
 
 - organize cards by user importance with numbered badges
 - use numbered badges on card face to indicate # of options for subTask
 - drag and drop cards to reorder
 - store query history
-
-
 
