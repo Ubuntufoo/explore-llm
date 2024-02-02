@@ -85,13 +85,13 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
       ))}
       <Modal show={showModal} onHide={handleCloseModal} centered size="xl" fullscreen='lg-down' className="text-white">
         <Modal.Header closeButton>
-          <Modal.Title className='text-light mx-auto'>
+          <Modal.Title className='mx-auto'>
             {selectedCard && selectedCard}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {showSpinner ? (
-            <Spinner animation="grow" variant="dark" />
+            <Spinner animation="grow" variant="secondary" />
           ) : (
             <>
               <h6 className='fst-italic'>Recommended:</h6>
@@ -140,7 +140,7 @@ export default function RenderCards({ cardTasks, prefs, primaryGoal, setOptionsH
           <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>
-          <Button variant="dark" onClick={handleSave}>
+          <Button variant="dark" size='lg' onClick={handleSave}>
             Save
           </Button>
         </Modal.Footer>

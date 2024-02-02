@@ -51,7 +51,7 @@ export default function Input({ setGetDecompCallback }) {
           <div className="input-group input-group-lg">
             <input
               type="text"
-              className="form-control text-center border border-5 border-black"
+              className="form-control text-center"
               placeholder="Explore an idea"
               aria-label="Explore an idea"
               aria-describedby="button-addon2"
@@ -59,11 +59,12 @@ export default function Input({ setGetDecompCallback }) {
               onChange={handleInputChangePrimary}
               onKeyPress={handleKeyPress}
             />
-            <button className="btn btn-dark border border-5 border-dark explore" type="button" id="button-addon2" onClick={getDecomp}>Explore</button>
+            <button className="btn btn-dark explore text-white" type="button" id="button-addon2" onClick={getDecomp}>Explore</button>
             <OverlayTrigger
-              placement='bottom'
+              placement='left'
+              delay={{ show: 250, hide: 400 }}
               overlay={
-                <Tooltip id={`tooltip`} className=''>
+                <Tooltip id={`tooltip`}>
                   <div>
                     <h5>To use this app:</h5>
                     <br />
@@ -75,7 +76,7 @@ export default function Input({ setGetDecompCallback }) {
                 </Tooltip>
               }
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="currentColor" className="bi bi-info-circle ps-3 my-auto" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" fill="currentColor" className="bi bi-info-circle ps-3 my-auto text-white" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
               </svg>

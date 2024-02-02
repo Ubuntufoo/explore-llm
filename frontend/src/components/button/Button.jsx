@@ -42,7 +42,7 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
       <div className="d-flex justify-content-center align-items-center position-relative">
         <button
           type="button"
-          className="btn border border-5 border-dark btn-lg btn-dark w-50 mt-4"
+          className="btn btn-lg w-50 summarize text-white"
           onClick={() => {
             sendSummary();
             handleShow();
@@ -54,7 +54,7 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
         {showSpinner && (
           <Spinner
             animation="grow"
-            variant="dark"
+            variant="secondary"
             className="position-absolute top-50 end-0 translate-middle-y me-5"
           />
         )}
@@ -64,7 +64,7 @@ export default function Button({ resetOptionsHxCallback, optionsHistory }) {
           centered size="xl" fullscreen='lg-down' className="text-white" show={show} onHide={handleClose}
         >
         <Modal.Body className='my-5'>
-          <pre>{summary}</pre>
+          <pre className='ms-3 fs-6'>{summary}</pre>
         </Modal.Body>
       </Modal>
         )}

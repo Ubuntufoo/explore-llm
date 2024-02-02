@@ -4,3 +4,8 @@ pre {
   overflow: auto;
   font-family: inherit;
 }
+
+.summarize {
+  background-color: #2e2e44;
+}
+
